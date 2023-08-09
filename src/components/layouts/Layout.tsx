@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React, { FC } from "react";
 import { Navbar } from "../ui/navbar/Navbar";
+import Link from "next/link";
 
 interface Props {
     children: React.ReactNode;
@@ -20,10 +21,17 @@ export const Layout: FC<Props> = ({ children, title, description, keywords }) =>
                 />
                 <meta
                     name="keywords"
-                    content={keywords}
+                    content={keywords || "sds"}
                 />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
+                {/*redes sociales */}
+                <meta property="org:tittle" content={title} />
+                <meta property="org:description" content={description} />
+                <meta property="org:image" content='/img/mario.jpg' />
+                <meta property="org:type" content='website' />
+
+                <Link rel="icon" href="/favicon.ico" />
+                <meta charSet="utf-8" />
             </Head>
             <Navbar />
             <main>
