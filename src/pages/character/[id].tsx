@@ -27,6 +27,7 @@ export const getStaticPaths: GetStaticPaths = async (locales) => {
     ))
 
     console.table(paths)
+
     return {
         paths: paths,
         fallback: true
@@ -36,6 +37,9 @@ export const getStaticPaths: GetStaticPaths = async (locales) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const id = params?.id as string
     const character = await getCharacter(id);
+
+    console.log(params)
+
     return {
         props: {
             character,

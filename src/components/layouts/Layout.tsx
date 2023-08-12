@@ -30,7 +30,7 @@ export const Layout: FC<Props> = ({ children, title, description, keywords }) =>
                 <meta property="org:image" content='/img/mario.jpg' />
                 <meta property="org:type" content='website' />
 
-                <Link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/favicon.ico" />
                 <meta charSet="utf-8" />
             </Head>
             <Navbar />
