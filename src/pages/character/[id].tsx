@@ -3,8 +3,7 @@ import React from 'react'
 import { Character } from '../../interface/character';
 import { Card } from '@/components/ui/card';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { getCharacters } from '@/service';
-import { getCharacter } from '@/service/getCharacter';
+import { getCharacter, getCharacters } from '@/service';
 
 interface Props {
     character: Character;
@@ -19,8 +18,8 @@ const CharacterPage: NextPage<Props> = ({ character }) => {
     )
 }
 
-export const getStaticPaths: GetStaticPaths = async (locales) => {
-    const idiomas = locales.locales as string[];
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+    const idiomas = locales as string[];
     const data = await getCharacters();
     const paths = data.flatMap((character) => (
         idiomas.map((idioma: string) => ({ params: { id: character.tail }, locale: idioma }))
@@ -29,8 +28,8 @@ export const getStaticPaths: GetStaticPaths = async (locales) => {
     console.table(paths)
 
     return {
-        paths: paths,
-        fallback: true
+        paths,
+        fallback: false
     }
 }
 
